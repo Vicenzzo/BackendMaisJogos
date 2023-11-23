@@ -25,8 +25,30 @@ public class JogoModel {
     private String tipoMemoria;
     private Integer quantArmazenamento;
     private String tipoArmazenamento;
-    @Column(name = "jogo", length = 1000000000)
-    private byte[] jogo;
+    @Column(name = "jogoWin", length = 1000000000)
+    private byte[] jogoWin;
+
+    @Column(name = "jogoAndroid", length = 1000000000)
+    private byte[] jogoAndroid;
+
+    @Column(name = "bannerUm", length = 1000000000)
+    private byte[] bannerUm;
+
+
+    @Column(name = "bannerDois", length = 1000000000)
+    private byte[] bannerDois;
+
+    @Column(name = "bannerTres", length = 1000000000)
+    private byte[] bannerTres;
+
+    @Column(name = "bannerQuatro", length = 1000000000)
+    private byte[] bannerQuatro;
+
+    @Column(name = "bannerCinco", length = 1000000000)
+    private byte[] bannerCinco;
+
+    @Column(name = "licenca", length = 1000000000)
+    private byte[] licenca;
     private Integer idDev;
 
 }

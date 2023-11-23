@@ -25,19 +25,38 @@ public class JogoService {
     public JogoService(JogoRepository repository) {
         this.repository = repository;
     }
-    public JogoModel atualizarJogo(Integer id, MultipartFile arquivo) throws IOException {
+
+
+    public JogoModel atualizarJogo(Integer id, MultipartFile jogoWin, MultipartFile jogoAndroid, MultipartFile bannerUm,
+                              MultipartFile bannerDois, MultipartFile bannerTres,
+                              MultipartFile bannerQuatro, MultipartFile bannerCinco,
+                              MultipartFile licenca)  throws IOException{
         Optional<JogoModel> jogoOptional = this.repository.findById(id);
 
         if (jogoOptional.isPresent()) {
             JogoModel jogo = jogoOptional.get();
 
             // Obter informações sobre o novo arquivo
-            String nome = arquivo.getOriginalFilename();
-            byte[] conteudo = arquivo.getBytes();
+            String nome = jogoWin.getOriginalFilename();
+            byte[] conteudo = jogoWin.getBytes();
+            byte[] conteudo2 = jogoAndroid.getBytes();
+            byte[] conteudo3 = bannerUm.getBytes();
+            byte[] conteudo4 = bannerDois.getBytes();
+            byte[] conteudo5 = bannerTres.getBytes();
+            byte[] conteudo6 = bannerQuatro.getBytes();
+            byte[] conteudo7 = bannerCinco.getBytes();
+            byte[] conteudo8 = licenca.getBytes();
 
             // Atualize os campos necessários do Avatar
             //avatar.setNome(nome);
-            jogo.setJogo(conteudo);
+            jogo.setJogoWin(conteudo);
+            jogo.setJogoAndroid(conteudo2);
+            jogo.setBannerUm(conteudo3);
+            jogo.setBannerDois(conteudo4);
+            jogo.setBannerTres(conteudo5);
+            jogo.setBannerQuatro(conteudo6);
+            jogo.setBannerCinco(conteudo7);
+            jogo.setLicenca(conteudo8);
 
             // Salve as mudanças no banco de dados
             jogo = repository.save(jogo);

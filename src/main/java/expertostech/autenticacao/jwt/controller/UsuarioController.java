@@ -76,7 +76,9 @@ public class UsuarioController {
             if(user.getIdAvatar() == null){
                 user.setIdAvatar(userNovo.getIdAvatar());
             }
-
+            if(user.getValorVendas() == 0){
+                user.setValorVendas(userNovo.getValorVendas());
+            }
             if(user.getSobre() == null){
                 user.setSobre(userNovo.getSobre());
             }

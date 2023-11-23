@@ -91,8 +91,29 @@ public class JogoController {
            {
                jogo.setTipoArmazenamento(jogoNovo.getTipoArmazenamento());
            }
-           if(jogo.getJogo() == null){
-               jogo.setJogo(jogoNovo.getJogo());
+           if(jogo.getJogoWin() == null){
+               jogo.setJogoWin(jogoNovo.getJogoWin());
+            }
+            if(jogo.getJogoAndroid() == null){
+                jogo.setJogoAndroid(jogoNovo.getJogoAndroid());
+            }
+            if(jogo.getBannerUm() == null){
+                jogo.setBannerUm(jogoNovo.getBannerUm());
+            }
+            if(jogo.getBannerDois() == null){
+                jogo.setBannerDois(jogoNovo.getBannerDois());
+            }
+            if(jogo.getBannerTres() == null){
+                jogo.setBannerTres(jogoNovo.getBannerTres());
+            }
+            if(jogo.getBannerQuatro() == null){
+                jogo.setBannerQuatro(jogoNovo.getBannerQuatro());
+            }
+            if(jogo.getBannerCinco() == null){
+                jogo.setBannerCinco(jogoNovo.getBannerCinco());
+            }
+            if(jogo.getLicenca() == null){
+                jogo.setLicenca(jogoNovo.getLicenca());
             }
            if (jogo.getIdDev() == null){
                jogo.setIdDev(jogoNovo.getIdDev());
@@ -105,14 +126,25 @@ public class JogoController {
         }
     }
     @PatchMapping("atualizaFile/{id}")
-    public ResponseEntity<String> handleFileUpload(@PathVariable Integer id, @RequestParam("file") MultipartFile file) {
+    public ResponseEntity<String> handleFileUpload(@PathVariable Integer id,
+                                                   @RequestParam("jogoWin") MultipartFile jogoWin,
+                                                   @RequestParam("jogoAndroid") MultipartFile jogoAndroid,
+                                                   @RequestParam("bannerUm") MultipartFile bannerUm,
+                                                   @RequestParam("bannerDois") MultipartFile bannerDois,
+                                                   @RequestParam("bannerTres") MultipartFile bannerTres,
+                                                   @RequestParam("bannerQuatro") MultipartFile bannerQuatro,
+                                                   @RequestParam("bannerCinco") MultipartFile bannerCinco,
+                                                   @RequestParam("licenca") MultipartFile licenca) {
         logger.info(">>>>>> api manipula file upload chamado");
-        if (file != null && !file.isEmpty()) {
+        if (jogoWin != null && !jogoWin.isEmpty() || jogoAndroid != null && !jogoAndroid.isEmpty()
+                || bannerUm != null && !bannerUm.isEmpty() || bannerDois != null && !bannerDois.isEmpty()
+                || bannerTres != null && !bannerTres.isEmpty() || bannerQuatro != null && !bannerQuatro.isEmpty()
+                || bannerCinco != null && !bannerCinco.isEmpty() || licenca != null && !licenca.isEmpty()) {
             logger.info(">>>>>> api manipula file upload file nao esta vazio");
             try {
                 logger.info(">>>>>> api manipula file upload chamou servico salvar");
 
-                jogoService.atualizarJogo(id, file);
+                jogoService.atualizarJogo(id, jogoWin, jogoAndroid, bannerUm, bannerDois, bannerTres, bannerQuatro, bannerCinco, licenca);
                 return ResponseEntity.ok().body("Imagem enviada com sucesso");
             } catch (FileNotFoundException e) {
                 logger.info(">>>>>> api manipula file upload arquivo não encontrado");

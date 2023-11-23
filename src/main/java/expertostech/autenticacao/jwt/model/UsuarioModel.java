@@ -29,6 +29,7 @@ public class UsuarioModel {
     private String confirmarPassword;
 
     private Integer moeda;
+    private double valorVendas;
     private String sobre;
     private Integer idAvatar;
 }
