@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -16,7 +17,8 @@ public class JogoModel {
     private Integer id;
     private String titulo;
     private String descricao;
-    private String genero;
+    @ElementCollection
+    private List<String> genero;
     private String plataforma;
     private String SO;
     private String processador;
@@ -28,8 +30,7 @@ public class JogoModel {
     @Column(name = "jogoWin", length = 1000000000)
     private byte[] jogoWin;
 
-    @Column(name = "jogoAndroid", length = 1000000000)
-    private byte[] jogoAndroid;
+
 
     @Column(name = "bannerUm", length = 1000000000)
     private byte[] bannerUm;

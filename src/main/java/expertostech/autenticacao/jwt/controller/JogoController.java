@@ -94,9 +94,7 @@ public class JogoController {
            if(jogo.getJogoWin() == null){
                jogo.setJogoWin(jogoNovo.getJogoWin());
             }
-            if(jogo.getJogoAndroid() == null){
-                jogo.setJogoAndroid(jogoNovo.getJogoAndroid());
-            }
+
             if(jogo.getBannerUm() == null){
                 jogo.setBannerUm(jogoNovo.getBannerUm());
             }
@@ -128,7 +126,6 @@ public class JogoController {
     @PatchMapping("atualizaFile/{id}")
     public ResponseEntity<String> handleFileUpload(@PathVariable Integer id,
                                                    @RequestParam("jogoWin") MultipartFile jogoWin,
-                                                   @RequestParam("jogoAndroid") MultipartFile jogoAndroid,
                                                    @RequestParam("bannerUm") MultipartFile bannerUm,
                                                    @RequestParam("bannerDois") MultipartFile bannerDois,
                                                    @RequestParam("bannerTres") MultipartFile bannerTres,
@@ -136,7 +133,7 @@ public class JogoController {
                                                    @RequestParam("bannerCinco") MultipartFile bannerCinco,
                                                    @RequestParam("licenca") MultipartFile licenca) {
         logger.info(">>>>>> api manipula file upload chamado");
-        if (jogoWin != null && !jogoWin.isEmpty() || jogoAndroid != null && !jogoAndroid.isEmpty()
+        if (jogoWin != null && !jogoWin.isEmpty()
                 || bannerUm != null && !bannerUm.isEmpty() || bannerDois != null && !bannerDois.isEmpty()
                 || bannerTres != null && !bannerTres.isEmpty() || bannerQuatro != null && !bannerQuatro.isEmpty()
                 || bannerCinco != null && !bannerCinco.isEmpty() || licenca != null && !licenca.isEmpty()) {
@@ -144,7 +141,7 @@ public class JogoController {
             try {
                 logger.info(">>>>>> api manipula file upload chamou servico salvar");
 
-                jogoService.atualizarJogo(id, jogoWin, jogoAndroid, bannerUm, bannerDois, bannerTres, bannerQuatro, bannerCinco, licenca);
+                jogoService.atualizarJogo(id, jogoWin, bannerUm, bannerDois, bannerTres, bannerQuatro, bannerCinco, licenca);
                 return ResponseEntity.ok().body("Imagem enviada com sucesso");
             } catch (FileNotFoundException e) {
                 logger.info(">>>>>> api manipula file upload arquivo não encontrado");

@@ -27,7 +27,7 @@ public class JogoService {
     }
 
 
-    public JogoModel atualizarJogo(Integer id, MultipartFile jogoWin, MultipartFile jogoAndroid, MultipartFile bannerUm,
+    public JogoModel atualizarJogo(Integer id, MultipartFile jogoWin, MultipartFile bannerUm,
                               MultipartFile bannerDois, MultipartFile bannerTres,
                               MultipartFile bannerQuatro, MultipartFile bannerCinco,
                               MultipartFile licenca)  throws IOException{
@@ -39,7 +39,6 @@ public class JogoService {
             // Obter informações sobre o novo arquivo
             String nome = jogoWin.getOriginalFilename();
             byte[] conteudo = jogoWin.getBytes();
-            byte[] conteudo2 = jogoAndroid.getBytes();
             byte[] conteudo3 = bannerUm.getBytes();
             byte[] conteudo4 = bannerDois.getBytes();
             byte[] conteudo5 = bannerTres.getBytes();
@@ -50,7 +49,6 @@ public class JogoService {
             // Atualize os campos necessários do Avatar
             //avatar.setNome(nome);
             jogo.setJogoWin(conteudo);
-            jogo.setJogoAndroid(conteudo2);
             jogo.setBannerUm(conteudo3);
             jogo.setBannerDois(conteudo4);
             jogo.setBannerTres(conteudo5);
