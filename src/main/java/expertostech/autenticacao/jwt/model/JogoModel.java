@@ -51,4 +51,6 @@ public class JogoModel {
     private byte[] licenca;
     private Integer idDev;
 
+    //adicionar classificação, video, colocar genero como array
+
 }

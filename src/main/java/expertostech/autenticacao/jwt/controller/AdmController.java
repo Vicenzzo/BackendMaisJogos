@@ -2,6 +2,7 @@ package expertostech.autenticacao.jwt.controller;
 
 
 import expertostech.autenticacao.jwt.model.AdmModel;
+import expertostech.autenticacao.jwt.model.LoginAdm;
 import expertostech.autenticacao.jwt.repository.AdmRepository;
 import expertostech.autenticacao.jwt.services.MensagemDeSucesso;
 import org.springframework.http.ResponseEntity;
@@ -51,5 +52,26 @@ public class AdmController {
         }
 
         return null;
+    }
+
+    @PostMapping("/login")
+    public String login(@RequestBody LoginAdm loginRequest) {
+        String email = loginRequest.getEmail();
+        String password = loginRequest.getPassword();
+
+        // Busca o usuário no banco de dados pelo email
+        Optional<AdmModel> userOptional = repository.findByEmail(email);
+
+        if (userOptional.isPresent()) {
+            AdmModel user = userOptional.get();
+            // Verifica a senha (não recomendado em produção, use bibliotecas de segurança)
+            if (user.getPassword().equals(password)) {
+                return "Login bem-sucedido. Bem-vindo, " + user.getEmail();
+            } else {
+                return "Credenciais inválidas";
+            }
+        } else {
+            return "Credenciais inválidas";
+        }
     }
 }
