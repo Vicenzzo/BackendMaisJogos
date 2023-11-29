@@ -116,7 +116,9 @@ public class JogoController {
            if (jogo.getIdDev() == null){
                jogo.setIdDev(jogoNovo.getIdDev());
            }
-
+            if(jogo.getValorJogo() == 0){
+                jogo.setValorJogo(jogoNovo.getValorJogo());
+            }
             return ResponseEntity.ok(repository.save(jogo));
 
         }else{

@@ -51,7 +51,7 @@ public class JogoModel {
     @Column(name = "licenca", length = 1000000000)
     private byte[] licenca;
     private Integer idDev;
-
+    private double valorJogo;
     //adicionar classificação, video, colocar genero como array
 
 }

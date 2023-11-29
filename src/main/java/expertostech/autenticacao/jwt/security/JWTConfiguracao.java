@@ -29,6 +29,7 @@ public class JWTConfiguracao extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(usuarioService).passwordEncoder(passwordEncoder);
     }
 
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
@@ -38,7 +39,20 @@ public class JWTConfiguracao extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/api/usuario/salvar").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/adm/salvar").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/adm/login").permitAll()
+
+                .antMatchers(HttpMethod.GET, "/api/adm/listarTodos").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/adm//listarAdm/{id}").permitAll()
+                .antMatchers(HttpMethod.PUT, "/api/adm/alterarAdmin/{id}").permitAll()
+                .antMatchers(HttpMethod.PUT, "/api/avatar/alterarAvatar/{id}").permitAll()
+                .antMatchers(HttpMethod.DELETE, "/api/adm/deletarAdm/{id}").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/check/salvar").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/avatar/salvar").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/avatar/listarAvatar/{id}").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/review/listarReview/{id}").permitAll()
+                .antMatchers(HttpMethod.DELETE, "/api/review/deletarReview/{id}").permitAll()
+                .antMatchers(HttpMethod.DELETE, "/api/avatar/deletarAvatar/{id}").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/review/salvar").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/review/listarTodos").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/check/listarTodos").permitAll()
 
                 .anyRequest().authenticated()

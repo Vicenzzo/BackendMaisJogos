@@ -102,7 +102,7 @@ public class AvatarController {
         }
     }
 
-    @DeleteMapping("deletarUser/{id}")
+    @DeleteMapping("deletarAvatar/{id}")
     public MensagemDeSucesso deletarAvatar(@PathVariable Integer id) {
         Optional<AvatarModel> avatarId = this.repository.findById(id);
         if (avatarId.isPresent()) {

@@ -32,4 +32,6 @@ public class UsuarioModel {
     private double valorVendas;
     private String sobre;
     private Integer idAvatar;
+
+
 }

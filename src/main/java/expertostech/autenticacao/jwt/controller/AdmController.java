@@ -74,4 +74,32 @@ public class AdmController {
             return "Credenciais inválidas";
         }
     }
+
+    @PutMapping("/alterarAdmin/{id}")
+    public ResponseEntity<AdmModel> alterarusuario(@PathVariable Integer id, @RequestBody AdmModel admin){
+        Optional<AdmModel> adminId = this.repository.findById(id);
+
+        if (adminId.isPresent()) {
+            AdmModel adminNovo = this.repository.findById(id).get();
+
+            admin.setId(id);
+
+            if(admin.getNome() == null){
+                admin.setNome(adminNovo.getNome());
+            }
+
+            if(admin.getEmail() == null){
+                admin.setNome(adminNovo.getEmail());
+            }
+
+            if(admin.getPassword() == null){
+                admin.setPassword(adminNovo.getPassword());
+            }
+
+            return ResponseEntity.ok(repository.save(admin));
+
+        }else{
+            return null;
+        }
+    }
 }
