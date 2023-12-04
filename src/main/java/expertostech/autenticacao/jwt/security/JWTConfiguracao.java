@@ -35,25 +35,30 @@ public class JWTConfiguracao extends WebSecurityConfigurerAdapter {
         http.csrf().disable().authorizeRequests()
 
                 .antMatchers(HttpMethod.POST, "/login").permitAll()
-
                 .antMatchers(HttpMethod.POST, "/api/usuario/salvar").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/adm/salvar").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/adm/login").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/review/salvar").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/check/salvar").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/avatar/salvar").permitAll()
+
 
                 .antMatchers(HttpMethod.GET, "/api/adm/listarTodos").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/adm//listarAdm/{id}").permitAll()
-                .antMatchers(HttpMethod.PUT, "/api/adm/alterarAdmin/{id}").permitAll()
-                .antMatchers(HttpMethod.PUT, "/api/avatar/alterarAvatar/{id}").permitAll()
-                .antMatchers(HttpMethod.DELETE, "/api/adm/deletarAdm/{id}").permitAll()
-                .antMatchers(HttpMethod.POST, "/api/check/salvar").permitAll()
-                .antMatchers(HttpMethod.POST, "/api/avatar/salvar").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/avatar/listarAvatar/{id}").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/review/listarReview/{id}").permitAll()
-                .antMatchers(HttpMethod.DELETE, "/api/review/deletarReview/{id}").permitAll()
-                .antMatchers(HttpMethod.DELETE, "/api/avatar/deletarAvatar/{id}").permitAll()
-                .antMatchers(HttpMethod.POST, "/api/review/salvar").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/review/listarTodos").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/check/listarTodos").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/jogo/listarTodos").permitAll()
+
+                .antMatchers(HttpMethod.PUT, "/api/adm/alterarAdmin/{id}").permitAll()
+                .antMatchers(HttpMethod.PUT, "/api/avatar/alterarAvatar/{id}").permitAll()
+
+                .antMatchers(HttpMethod.DELETE, "/api/adm/deletarAdm/{id}").permitAll()
+                .antMatchers(HttpMethod.DELETE, "/api/review/deletarReview/{id}").permitAll()
+                .antMatchers(HttpMethod.DELETE, "/api/avatar/deletarAvatar/{id}").permitAll()
+
+
 
                 .anyRequest().authenticated()
                 .and().cors()
@@ -66,7 +71,7 @@ public class JWTConfiguracao extends WebSecurityConfigurerAdapter {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.addAllowedOrigin("http://localhost:5173");
+        configuration.addAllowedOrigin("https://mais-jogos-frontend-react-mxfw.vercel.app/");
         configuration.addAllowedMethod("*");
         configuration.addAllowedHeader("*");
         configuration.setAllowCredentials(true);

@@ -3,8 +3,11 @@ package expertostech.autenticacao.jwt.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -20,13 +23,17 @@ public class JogoModel {
     @ElementCollection
     private List<String> genero;
     private String plataforma;
-    private String SO;
+    private String so;
     private String processador;
     private String placaDeVideo;
     private Integer quantMemoria;
     private String tipoMemoria;
     private Integer quantArmazenamento;
     private String tipoArmazenamento;
+    private String classficacaoIndicativa;
+    @CreationTimestamp
+    @Column(name = "data_criacao", nullable = false, updatable = false)
+    private LocalDate dataCriacao;
     @Column(name = "jogoWin", length = 1000000000)
     private byte[] jogoWin;
 

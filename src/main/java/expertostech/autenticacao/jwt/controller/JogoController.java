@@ -69,8 +69,8 @@ public class JogoController {
            if(jogo.getPlataforma() == null){
                jogo.setPlataforma(jogoNovo.getPlataforma());
            }
-           if(jogo.getSO() == null){
-               jogo.setSO(jogoNovo.getSO());
+           if(jogo.getSo() == null){
+               jogo.setSo(jogoNovo.getSo());
            }
            if(jogo.getProcessador() == null){
                jogo.setProcessador(jogoNovo.getProcessador());
@@ -115,6 +115,9 @@ public class JogoController {
             }
            if (jogo.getIdDev() == null){
                jogo.setIdDev(jogoNovo.getIdDev());
+           }
+           if (jogo.getClassficacaoIndicativa() == null){
+               jogo.setClassficacaoIndicativa(jogoNovo.getClassficacaoIndicativa());
            }
             if(jogo.getValorJogo() == 0){
                 jogo.setValorJogo(jogoNovo.getValorJogo());

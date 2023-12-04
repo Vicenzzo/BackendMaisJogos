@@ -35,7 +35,14 @@ public class PagDevPixController {
         }
         return null;
     }
-
+    @GetMapping("/listaPixDev/{id}")
+    public ResponseEntity<PagDevPixModel> retornaDevPix(@PathVariable Integer id){
+        Optional<PagDevPixModel> pagPixId = this.repository.findByIdDev(id);
+        if(pagPixId.isPresent()) {
+            return ResponseEntity.ok(repository.findById(id).get());
+        }
+        return null;
+    }
     @PutMapping("/alterarReview/{id}")
     public ResponseEntity<PagDevPixModel> alterarReview(@PathVariable Integer id, @RequestBody PagDevPixModel pag){
         Optional<PagDevPixModel> pagDevId = this.repository.findById(id);
